@@ -7,7 +7,7 @@
 // Lab 08-02
 // Partners: @brian-250
 //
-// Program to output a file from input
+// Program to output a file from input (string)
 //
 
 #include <fstream>
