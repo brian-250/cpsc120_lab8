@@ -1,4 +1,14 @@
-// TODO: Insert your header
+// Grey Espinoza
+// CPSC 120-12
+// 2022-10-27
+// gray@csu.fullerton.edu
+// @CSUFgrey
+//
+// Lab 08-03
+// Partners: @brian-250
+//
+// Program to print/run a file animation
+//
 
 #include <chrono>
 #include <fstream>
@@ -6,30 +16,26 @@
 #include <string>
 #include <thread>
 #include <vector>
-
+using namespace std::chrono_literals;
 int main(int argc, char const* argv[]) {
-  // TODO: Convert argv to a vector of arguments.
-  // TODO: Check if the number of arguments is enough to continue.
-  // If there are too few arguments, print a descriptive error message
-  // and exit.
-  // TODO: Declare a std::string variable named input_file_name.
-  // Initialize this variable to the first command line argument.
-  // TODO: Declare a std::ifstream variable named input_file_stream.
-  // Initialize the variable using the variable input_file_name.
-  // TODO: Check to see if input_file_stream is open. If input_file_stream
-  // is not open, then print a descriptive error message and exit.
-  // See https://en.cppreference.com/w/cpp/io/basic_ifstream/is_open
-
-  // TODO: Using a loop, read from input_file_handle one character at a time.
-  // TODO: Declare a char variable named letter to store
-  // the character read from the file.
-  // TODO: Use the member function get() to read a character from
-  // input_file_stream. See
-  // https://en.cppreference.com/w/cpp/io/basic_istream/get
-  // TODO: Simulate a terminal from the 1980s by causing the program to pause
-  // (sleep) for 10,000 microseconds. Adjust the pause time if your computer is
-  // too fast or too slow. The bigger the number the slower the program
-  // will run. The smaller the number, the faster the program will run.
-  // TODO: Close the input_file_stream.
+  std::vector<std::string> arguments =
+      std::vector<std::string>{argv, argv + argc};
+  if (arguments.size() != 2) {
+    std::cout << "Please provide a path to a file.\n";
+    return 1;
+  }
+  std::string input_file_name{arguments.at(1)};
+  std::ifstream input_file_stream{input_file_name};
+  if (!input_file_stream.is_open()) {
+    std::cout << "Could not open the file " << input_file_name
+              << ". Exiting.\n";
+    return 1;
+  }
+  char letter{0};
+  while (input_file_stream.get(letter)) {
+    std::cout << letter;
+    std::this_thread::sleep_for(2000us);
+  }
+  input_file_stream.close();
   return 0;
 }
