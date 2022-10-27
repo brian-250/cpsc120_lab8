@@ -28,14 +28,14 @@ int main(int argc, char const* argv[]) {
       std::vector<std::string>{argv, argv + argc};
   if (arguments.size() != 2) {
     std::cout << "Please provide a path to a file. Exiting.\n";
-    return 1;
+    return -1;
   }
   std::string input_file_name{arguments.at(1)};
   std::ifstream input_file_stream{input_file_name};
   if (!input_file_stream.is_open()) {
     std::cout << "Could not open the file " << input_file_name
               << ". Exiting.\n";
-    return 1;
+    return -1;
   }
   while (input_file_stream.good()) {
     std::string line_buffer;
