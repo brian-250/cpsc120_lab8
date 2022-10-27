@@ -7,7 +7,7 @@
 // Lab 08-01
 // Partners: @brian-250
 //
-// Program to print out Palindromes from a file
+// Program to print all Palindromes from a file
 //
 
 #include <fstream>
